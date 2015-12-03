@@ -1,4 +1,4 @@
-FROM ubuntu:saucy
+FROM ubuntu:latest
 MAINTAINER roli keusch  <mail@keus.ch>
 
 # Update Ubuntu to the latest
@@ -13,9 +13,9 @@ RUN git clone https://github.com/mistio/mist.io.git /opt/mistio
 RUN cd /opt/mistio
 WORKDIR /opt/mistio
 RUN /usr/bin/pip install setuptools --upgrade
+RUN /usr/bin/pip install pyvmomi
 RUN /usr/bin/python bootstrap.py
 RUN /opt/mistio/bin/buildout -v
-
 
 # Clean up
 RUN apt-get autoremove && apt-get autoclean
