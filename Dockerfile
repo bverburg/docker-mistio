@@ -12,10 +12,10 @@ git clone https://github.com/mistio/mist.io.git /opt/mistio && \
 cd /opt/mistio
 
 WORKDIR /opt/mistio
+USER mist
 RUN /usr/bin/pip install setuptools --upgrade && \
 /usr/bin/pip install pyvmomi && \
-/usr/bin/python bootstrap.py
-USER mist
+/usr/bin/python bootstrap.py && \
 /opt/mistio/bin/buildout -v 
 USER root
 apt-get autoremove && apt-get autoclean
